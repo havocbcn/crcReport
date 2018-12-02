@@ -152,7 +152,7 @@ namespace test {
 			
 				Render render = report.Render();
                 render.SavePDF("file.pdf");
-                //render.SaveTiff("file.tiff");
+                render.SaveTiff("file.tiff");
             }
             DateTime dtEnd = DateTime.Now;
             Console.WriteLine(String.Format("            working: {0:0}%.", ((float)iterations / (float)iterations) * 100.0f));
