@@ -1,12 +1,12 @@
 # SharpReport
-Create a report using CSharp, export it in PDF or TIFF
+Reporting tool using CSharp code directly, export in PDF or TIFF.
 
-This version is in a early beta (peta*) stage, not suitable for production environment, just for test.
+Use it at your own risk. Issues are welcome.
 
 Features:
 
-* Fast
-* The report is generated using code, all elements are relative to previous ones, easily expandable.
+* Incredible fast
+* The report is generated using C# code, all elements are relative to previous ones, easily expandable.
 * Labels, images, rectangles.
 * PDF fonts, Ttf fonts (embedded/referenced). Not all fonts are supported!.
 * Free
