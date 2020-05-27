@@ -16,7 +16,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using SharpReport.PDF;
 using System.Globalization;
 
 namespace SharpReport {
