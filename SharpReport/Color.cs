@@ -22,13 +22,13 @@ namespace SharpReport {
     public struct Color  : IEquatable<Color> {
         public Color(int R, int G, int B)
         {
-            m_R = R;
-            m_G = G;
-            m_B = B;
+            this.R = R;
+            this.G = G;
+            this.B = B;
         }
 
         public override int GetHashCode() {
-            long res = (m_R << 16) + (m_G << 8) + m_B;
+            long res = (R << 16) + (G << 8) + B;
             return res.GetHashCode();
         }
 
@@ -46,33 +46,48 @@ namespace SharpReport {
         }
 
         internal System.Drawing.Color GetSystemInverseColor() {
-            return System.Drawing.Color.FromArgb(m_B, m_G, m_R);
+            return System.Drawing.Color.FromArgb(B, G, R);
         }
 
         internal string GetPdfTextColor() {
-            return (m_R / 255.0f).ToString("F5", CultureInfo.InvariantCulture) + " " 
-                + (m_G / 255.0f).ToString("F5", CultureInfo.InvariantCulture) + " " 
-                + (m_B / 255.0f).ToString("F5", CultureInfo.InvariantCulture);
+            return (R / 255.0f).ToString("F5", CultureInfo.InvariantCulture) + " " 
+                + (G / 255.0f).ToString("F5", CultureInfo.InvariantCulture) + " " 
+                + (B / 255.0f).ToString("F5", CultureInfo.InvariantCulture);
         }
 
         public override string ToString() {
-            return "Color (" + m_R + "," + m_G + "," + m_B + ")";
+            return "Color (" + R + "," + G + "," + B + ")";
         }
        
 
         /// <summary>
         /// Red
         /// </summary>
-        private readonly int m_R;
-
+        internal int R { get; }
+        
         /// <summary>
         /// Green
         /// </summary>
-        private readonly int m_G;
+        internal int G { get; }
 
         /// <summary>
         /// Blue
         /// </summary>
-        private readonly int m_B;
+        internal int B  { get; }
+
+        /// <summary>
+        /// Red
+        /// </summary>
+        internal float R_Normalized => (float)R / 255f;
+
+        /// <summary>
+        /// Green
+        /// </summary>
+        internal float G_Normalized => (float)G / 255f;
+
+        /// <summary>
+        /// Blue
+        /// </summary>
+        internal float B_Normalized => (float)B / 255f;
     }
 }

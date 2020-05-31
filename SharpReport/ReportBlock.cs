@@ -150,7 +150,7 @@ namespace SharpReport
 		/// </summary>
 		/// <param name="font">Font.</param>
 		public void SetFont (Font font) {
-			currentFont = font;
+			currentFont = font;			
         }
 
 		/// <summary>

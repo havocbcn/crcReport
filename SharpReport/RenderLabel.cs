@@ -16,7 +16,7 @@
 using System;
 using System.Drawing;
 using System.Globalization;
-using SharpReport.PDF;
+using crcPdf;
 
 namespace SharpReport {
 	/// <summary>
@@ -57,24 +57,22 @@ namespace SharpReport {
 		/// </summary>
 		/// <param name="pdf">pdf</param>
 		/// <param name="pageSize">Page size.</param>
-		internal override void RenderPDF(SharpPdf pdf, PageSize pageSize) {
+		internal override void RenderPDF(SimplePdf pdf, PageSize pageSize) {
 			float xPos = x * pageSize.GetDPI;
 			float yPos = (pageSize.GetHeightInCM - y - m_font.GetHeight()) * pageSize.GetDPI;
+			
+			pdf.SetFont(m_font.GetPDFFont(), (int)(m_font.Size * pageSize.GetDPI));
+			pdf.SetColor(m_font.GetPDFColor.R_Normalized, m_font.GetPDFColor.G_Normalized, m_font.GetPDFColor.B_Normalized);
 
-			pdf.SetFont(m_font);
-			pdf.SetFontSize(m_font.Size * pageSize.GetDPI);
-
-			if (Math.Abs(m_font.Angle) < 0.0001) {		// se compara con un epsilon por ser un float
-				pdf.SetTextMatrix(null);
-			} else {
+			if (Math.Abs(m_font.Angle) > 0.0001) {		// se compara con un epsilon por ser un float
 				float sinus = (float)Math.Sin(m_font.Angle *degreesToRadiant);
 				float cosinus = (float)Math.Cos(m_font.Angle *degreesToRadiant);
 				float fontHeight = (-m_font.GetDescentPoint() - m_font.GetHeight())  * pageSize.GetDPI;
 				xPos = xPos - sinus * fontHeight;
 				yPos = yPos + cosinus * fontHeight - fontHeight;
-
-				pdf.SetTextMatrix(new TransformMatrix(cosinus, sinus, -sinus, cosinus));
 			}
+
+			pdf.TextAngle(m_font.Angle);
 
 			pdf.DrawText(m_text, (int)xPos, (int)yPos);
 		}

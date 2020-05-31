@@ -14,7 +14,7 @@
 // along with SharpReport.  If not, see <http://www.gnu.org/licenses/>.
 
 using System.Drawing;
-using SharpReport.PDF;
+using crcPdf;
 
 namespace SharpReport
 {
@@ -30,7 +30,7 @@ namespace SharpReport
 		/// Draw this element to a PDF
 		/// </summary>
 		/// <param name="cb">PDF writer</param>
-		internal abstract void RenderPDF(SharpPdf pdf, PageSize pageSize);
+		internal abstract void RenderPDF(SimplePdf pdf, PageSize pageSize);
 
 		/// <summary>
 		/// Draw this element to a TIFF

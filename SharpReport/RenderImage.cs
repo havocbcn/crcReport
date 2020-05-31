@@ -17,7 +17,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using SharpReport.PDF;
+using crcPdf;
 
 namespace SharpReport
 {
@@ -52,13 +52,11 @@ namespace SharpReport
         /// </summary>
         /// <param name="pdf">Cb.</param>
         /// <param name="pageSize">Page size.</param>
-        internal override void RenderPDF(SharpPdf pdf, PageSize pageSize) {
-            XrefImage img = XrefImageFactory.GetImageJpeg(m_image);
-            pdf.DrawImage(x * pageSize.GetDPI, 
+        internal override void RenderPDF(SimplePdf pdf, PageSize pageSize) {
+            pdf.DrawImage(m_image, x * pageSize.GetDPI, 
                           (pageSize.GetHeightInCM - y - m_h) * pageSize.GetDPI, 
                           m_w * pageSize.GetDPI, 
-                          m_h * pageSize.GetDPI, 
-                          img);
+                          m_h * pageSize.GetDPI);
 		}
 
 		/// <summary>
@@ -89,7 +87,7 @@ namespace SharpReport
 
 			if (m_image == null)
 			{
-				throw new ImageException("null image");
+				throw new SharpReportException(SharpReportExceptionCodes.IMAGE_NULL, "null image");
 			}
 
 		}

@@ -16,7 +16,7 @@
 using System;
 using System.Drawing;
 using System.Diagnostics;
-using SharpReport.PDF;
+using crcPdf;
 using System.Globalization;
 
 namespace SharpReport
@@ -54,13 +54,13 @@ namespace SharpReport
 		/// </summary>
 		/// <param name="pdf">pdf<param>
 		/// <param name="pageSize">Page size.</param>
-		internal override void RenderPDF(SharpPdf pdf, PageSize pageSize) {
+		internal override void RenderPDF(SimplePdf pdf, PageSize pageSize) {
 			float fx = x * pageSize.GetDPI;
 			float fy = (pageSize.GetHeightInCM - y) * pageSize.GetDPI;
 			float fwidth =  m_w * pageSize.GetDPI;
 			float fheight = -m_h * pageSize.GetDPI;
 
-			pdf.SetColor(m_color);
+			pdf.SetColor(m_color.R/255f, m_color.G/255f, m_color.B/255f);
 
 			if (m_IsFull)
 				pdf.DrawRectangleFull((int)fx, (int)fy, (int)fwidth, (int)fheight);

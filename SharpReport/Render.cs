@@ -19,7 +19,6 @@ using System.Collections.Generic;
 using BitMiracle.LibTiff.Classic;
 using System.Drawing;
 using System.Drawing.Imaging;
-using SharpReport.PDF;
 
 namespace SharpReport {
 	/// <summary>
@@ -105,7 +104,7 @@ namespace SharpReport {
 		/// <returns>A MemoryStream</returns>
 		/// <param name="pageSize">Pages.</param>
 		private MemoryStream RenderPDFToStream (PageSize pageSize) {
-            SharpPdf pdf = new SharpPdf(pageSize.GetWidthInPixels, pageSize.GetHeightInPixels);
+            var pdf = crcPdf.Pdf.CreateSimple(pageSize.GetWidthInPixels, pageSize.GetHeightInPixels);
 
             foreach (RenderPage page in m_pages) {
 				pdf.NewPage ();
@@ -115,7 +114,9 @@ namespace SharpReport {
 				}
 			}			
 
-			return pdf.SaveStream();
+			var stream = new MemoryStream();
+			pdf.Save(stream);
+			return stream;
 		}             
 
 		/// <summary>

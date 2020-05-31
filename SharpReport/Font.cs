@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Globalization;
+using crcPdf;
 
 namespace SharpReport {
     /// <summary>
@@ -107,8 +108,8 @@ namespace SharpReport {
         /// Get a PDF font
         /// </summary>
         /// <returns>The PDF Font.</returns>
-		public XrefFont GetPDFFont() {
-            return XrefFontFactory.GetFont(m_name, m_bold, m_italic, (m_embedded == FontPlacement.Embedded ? SharpReport.PDF.EEmbedded.Embedded : SharpReport.PDF.EEmbedded.NotEmbedded), GetUseBase64());
+		public DocumentFont GetPDFFont() {
+            return crcPdf.Fonts.FontFactory.GetFont(m_name, m_bold, m_italic, (m_embedded == FontPlacement.Embedded ? crcPdf.Fonts.Embedded.Yes : crcPdf.Fonts.Embedded.No));
 		}
 
 		internal virtual bool GetUseBase64()

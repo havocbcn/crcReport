@@ -41,7 +41,7 @@ namespace test {
 					};
 
 				report.SetBackgroundFunction((rb, obj) => {
-					Font h1 = new Font("Times New Roman", 300, FontEmphasis.Bold);
+					Font h1 = new Font("Times Roman", 300, FontEmphasis.Bold);
 					h1.SetColor(new Color(255, 0, 0));
 					h1.SetAngle(45);
 					rb.SetFont(h1);
@@ -49,10 +49,8 @@ namespace test {
 				}, null);
 
 				report.SetHeaderFunction((rb, obj) => {
-					Font h1 = new Font("Times New Roman", 80, FontEmphasis.Bold | FontEmphasis.Italic);
-					//Font h1 = new Font("/home/carlos/FreeSans.ttf", 80, FontEmphasis.Bold | FontEmphasis.Italic);
-					//h1.SetEmbedded(FontPlacement.Embedded);
-					Font h1minor = new Font("Times New Roman", 40, FontEmphasis.Bold | FontEmphasis.Italic);
+					Font h1 = new Font("Times Roman", 80, FontEmphasis.Bold | FontEmphasis.Italic);
+					Font h1minor = new Font("Times Roman", 40, FontEmphasis.Bold | FontEmphasis.Italic);
 					Font h1Left = new Font("Helvetica", 50, FontEmphasis.Bold);
 					Font h1Middle = new Font("Helvetica", 50, FontEmphasis.Bold);
 
