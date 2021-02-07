@@ -5,7 +5,7 @@
   <ItemGroup>
     <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.639"/>
     <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1"/>
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0"/>
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0"/>
     <PackageReference Include="crcPdf" Version="0.0.5.2"/>
   </ItemGroup> 
 </Project>
