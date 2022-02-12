@@ -3,7 +3,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.639"/>
+    <PackageReference Include="BitMiracle.LibTiff.NET" Version="2.4.649"/>
     <PackageReference Include="System.Text.Encoding.CodePages" Version="5.0.0"/>
     <PackageReference Include="System.Drawing.Common" Version="5.0.2"/>
     <PackageReference Include="crcPdf" Version="0.0.5.2"/>
